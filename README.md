@@ -12,3 +12,6 @@ I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on 
 * Branch and loop support (BEQ, BNE)
 * Register dump after execution (easy debugging)
 --
+
+### Supported Instructions
+
