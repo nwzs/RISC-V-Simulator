@@ -16,3 +16,17 @@ I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on 
 
 ### Supported Instructions
 
+### Project Structure
+RISC-V-Simulator/
+├── src/
+│   ├── Main.java           # Entry point
+│   ├── CPU.java            # Fetch-decode-execute loop, program counter
+│   ├── RegisterFile.java   # 32 general-purpose registers
+│   ├── Memory.java         # Byte-addressable memory with word read/write
+│   ├── ALU.java            # Arithmetic and logic operations
+│   ├── Instruction.java    # Decoded instruction representation
+│   ├── Decoder.java        # Binary instruction decoder (opcode → Instruction)
+│   ├── Assembler.java      # Text assembler (assembly → binary)
+│   └── ProgramLoader.java  # Loads .asm files into memory
+├── add.asm                 # Sample program: adds two numbers
+└── countdown.asm           # Sample program: countdown loop using BNE
