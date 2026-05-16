@@ -1,20 +1,23 @@
-﻿# RISC-V-Simulator
-A software implementation of a RISC-V processor written in Java. This simulator executes RV32I assembly instructions through a fetch-decode-execute pipeline. It also includes a built-in assembler that reads `.asm` files directly.
+# RISC-V CPU Simulator
 
-I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on an FPGA. This project serves to bridge hardware architecture and software simulation.
+A software implementation of a RISC-V processor written in Java. The simulator executes real RV32I assembly instructions through a complete fetch-decode-execute pipeline, with a built-in assembler that reads `.asm` files directly.
+
+Built as a follow-up to an 8-bit ALU processor implemented in Verilog on an FPGA — this project bridges hardware architecture and software simulation.
 
 ---
-### Features
 
-* Full fetch &rarr; decode &rarr; execute pipeline
-* 32-register file (x0 hardwired to zero)
-* Byte-addressable memory model (64KB)
-* Built-in assembler, no hex required
-* Branch and loop support (BEQ, BNE)
-* Register dump after execution (easy debugging)
+## Features
 
+- Full fetch → decode → execute pipeline
+- 32-register file (x0 hardwired to zero per RISC-V spec)
+- Byte-addressable memory model (64KB)
+- Built-in assembler — write real assembly, no hex required
+- Branch and loop support (BEQ, BNE)
+- Register dump after execution for easy debugging
 
-### Supported Instructions
+---
+
+## Supported Instructions
 
 | Type | Instructions |
 |------|-------------|
@@ -25,7 +28,10 @@ I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on 
 | Branch | BEQ, BNE |
 | Jump | JAL |
 
-### Project Structure
+---
+
+## Project Structure
+
 ```
 RISC-V-Simulator/
 ├── src/
@@ -42,13 +48,91 @@ RISC-V-Simulator/
 └── countdown.asm           # Sample program: countdown loop using BNE
 ```
 
-### How to Run
-*Requirements:* Java IDK 17+, IntelliJ IDEA or any Java IDE
+---
 
-1. Clone repository
-2. Open in IntelliJ as a Java Project
+## How to Run
+
+**Requirements:** Java JDK 17+, IntelliJ IDEA (or any Java IDE)
+
+1. Clone the repository
+2. Open in IntelliJ as a Java project
 3. Set the program to load in `Main.java`:
-
 ```java
 loader.load("add.asm", memory);
 ```
+4. Run `Main.java`
+
+---
+
+## Sample Programs
+
+### add.asm
+```
+ADDI x1, x0, 10   # x1 = 10
+ADDI x2, x0, 20   # x2 = 20
+ADD  x3, x1, x2   # x3 = 30
+```
+**Output:**
+```
+PC=0  | ADDI  rd=x1 rs1=x0 imm=10
+PC=4  | ADDI  rd=x2 rs1=x0 imm=20
+PC=8  | ADD   rd=x3 rs1=x1 rs2=x2
+HALT - all-zero instructions reached
+x1 = 10
+x2 = 20
+x3 = 30
+```
+
+### countdown.asm
+```
+ADDI x1, x0, 5    # x1 = 5 (counter)
+ADDI x2, x0, 1    # x2 = 1 (step)
+SUB  x1, x1, x2   # x1 = x1 - 1
+BNE  x1, x0, -8   # loop until x1 == 0
+```
+**Output:**
+```
+PC=0  | ADDI  rd=x1 imm=5
+PC=4  | ADDI  rd=x2 imm=1
+PC=8  | SUB   rd=x1 rs1=x1 rs2=x2   ← loops 5 times
+PC=12 | BNE   rs1=x1 rs2=x0 imm=-8
+HALT - all-zero instructions reached
+x1 = 0
+```
+
+---
+
+## Architecture
+
+```
+         ┌─────────────┐
+         │ ProgramLoader│  ← reads .asm file
+         └──────┬──────┘
+                │
+         ┌──────▼──────┐
+         │  Assembler   │  ← converts text to binary
+         └──────┬──────┘
+                │
+         ┌──────▼──────┐
+         │    Memory    │  ← stores binary instructions
+         └──────┬──────┘
+                │
+    ┌───────────▼───────────┐
+    │          CPU           │
+    │  ┌──────────────────┐ │
+    │  │  1. FETCH        │ │  ← reads word from Memory[PC]
+    │  │  2. DECODE       │ │  ← Decoder extracts fields
+    │  │  3. EXECUTE      │ │  ← ALU + RegisterFile + PC update
+    │  └──────────────────┘ │
+    └───────────────────────┘
+```
+
+---
+
+## Related Projects
+
+- [8-Bit Micro-coded ALU Processor](https://github.com/nwzs/8-Bit-ALU-Processor-Design) — hardware implementation of an ALU in Verilog, deployed on an Intel DE2 FPGA board
+
+---
+
+*Developed independently as a computer architecture portfolio project — Toronto Metropolitan University, 2025*
