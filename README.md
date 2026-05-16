@@ -135,4 +135,4 @@ x1 = 0
 
 ---
 
-*Developed independently as a computer architecture portfolio project — Toronto Metropolitan University, 2025*
+*Developed independently as a computer architecture portfolio project — Toronto Metropolitan University, 2026*
