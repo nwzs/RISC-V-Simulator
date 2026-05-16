@@ -16,6 +16,11 @@ I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on 
 
 ### Supported Instructions
 
+| Type | Instructions |
+|------|-------------|
+| Arithmetic | ADD, SUB, ADDI |
+| Logic | AND, OR, XOR, ANDI, ORI |
+
 ### Project Structure
 ```
 RISC-V-Simulator/
