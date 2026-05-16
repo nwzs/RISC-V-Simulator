@@ -102,33 +102,6 @@ x1 = 0
 
 ---
 
-## Architecture
-
-```
-         ┌─────────────┐
-         │ ProgramLoader│  ← reads .asm file
-         └──────┬──────┘
-                │
-         ┌──────▼──────┐
-         │  Assembler   │  ← converts text to binary
-         └──────┬──────┘
-                │
-         ┌──────▼──────┐
-         │    Memory    │  ← stores binary instructions
-         └──────┬──────┘
-                │
-    ┌───────────▼───────────┐
-    │          CPU           │
-    │  ┌──────────────────┐ │
-    │  │  1. FETCH        │ │  ← reads word from Memory[PC]
-    │  │  2. DECODE       │ │  ← Decoder extracts fields
-    │  │  3. EXECUTE      │ │  ← ALU + RegisterFile + PC update
-    │  └──────────────────┘ │
-    └───────────────────────┘
-```
-
----
-
 ## Related Projects
 
 - [8-Bit Micro-coded ALU Processor](https://github.com/nwzs/8-Bit-ALU-Processor-Design) — hardware implementation of an ALU in Verilog, deployed on an Intel DE2 FPGA board
