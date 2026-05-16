@@ -41,3 +41,10 @@ RISC-V-Simulator/
 ├── add.asm                 # Sample program: adds two numbers
 └── countdown.asm           # Sample program: countdown loop using BNE
 ```
+
+### How to Run
+*Requirements:* Java IDK 17+, IntelliJ IDEA or any Java IDE
+
+1. Clone repository
+2. Open in IntelliJ as a Java Project
+3. Set the program to load in `Main.java`:
