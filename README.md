@@ -1,17 +1,17 @@
 # RISC-V CPU Simulator
 
-A software implementation of a RISC-V processor written in Java. The simulator executes real RV32I assembly instructions through a complete fetch-decode-execute pipeline, with a built-in assembler that reads `.asm` files directly.
+A software implementation of a RISC-V processor written in Java. The simulator executes real RV32I assembly instructions through a fetch-decode-execute pipeline, with a built-in assembler that reads `.asm` files directly.
 
-Built as a follow-up to an 8-bit ALU processor implemented in Verilog on an FPGA — this project bridges hardware architecture and software simulation.
+Built as a follow-up to an 8-bit ALU processor implemented in Verilog on an FPGA, this project bridges hardware architecture and software simulation.
 
 ---
 
 ## Features
 
 - Full fetch → decode → execute pipeline
-- 32-register file (x0 hardwired to zero per RISC-V spec)
+- 32-register file
 - Byte-addressable memory model (64KB)
-- Built-in assembler — write real assembly, no hex required
+- Built-in assembler
 - Branch and loop support (BEQ, BNE)
 - Register dump after execution for easy debugging
 
