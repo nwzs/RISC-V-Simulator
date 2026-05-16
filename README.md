@@ -4,6 +4,7 @@ A software implementation of a RISC-V processor written in Java. This simulator 
 I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on an FPGA. This project serves to bridge hardware architecture and software simulation.
 --
 ### Features
+
 * Full fetch &rarr; decode &rarr; execute pipeline
 * 32-register file (x0 hardwired to zero)
 * Byte-addressable memory model (64KB)
