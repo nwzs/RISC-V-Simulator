@@ -48,3 +48,7 @@ RISC-V-Simulator/
 1. Clone repository
 2. Open in IntelliJ as a Java Project
 3. Set the program to load in `Main.java`:
+
+```java
+loader.load("add.asm", memory);
+```
