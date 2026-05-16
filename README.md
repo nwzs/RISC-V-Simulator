@@ -106,6 +106,3 @@ x1 = 0
 
 - [8-Bit Micro-coded ALU Processor](https://github.com/nwzs/8-Bit-ALU-Processor-Design) — hardware implementation of an ALU in Verilog, deployed on an Intel DE2 FPGA board
 
----
-
-*Developed independently as a computer architecture portfolio project — Toronto Metropolitan University, 2026*
