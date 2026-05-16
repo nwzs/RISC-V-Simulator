@@ -20,6 +20,10 @@ I built this as a follow-up to an 8-bit ALU processor implemented in Verilog on 
 |------|-------------|
 | Arithmetic | ADD, SUB, ADDI |
 | Logic | AND, OR, XOR, ANDI, ORI |
+| Comparison | SLT, SLTI |
+| Memory | LW, SW |
+| Branch | BEQ, BNE |
+| Jump | JAL |
 
 ### Project Structure
 ```
